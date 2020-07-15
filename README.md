@@ -37,4 +37,4 @@ $ rails c
 ---
 Схема БД
 
-![bd schema](db.jpg)
+![bd schema](docs/db.jpg)
