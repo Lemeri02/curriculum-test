@@ -34,3 +34,7 @@ _см. `db/seeds.rb`_
 ```
 $ rails c
 ```
+---
+Схема БД
+
+![bd schema](db.jpg)
