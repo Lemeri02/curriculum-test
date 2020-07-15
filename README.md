@@ -1,24 +1,77 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Тестовое задание
 
-Things you may want to cover:
+#### Ruby version
 
-* Ruby version
+Версия `Ruby 2.7.0`
 
-* System dependencies
+#### Установка и запуск приложения
 
-* Configuration
+1. Скопируйте репозиторий
 
-* Database creation
+```
+$ git clone git@github.com:Lemeri02/curriculum-test.git
+```
 
-* Database initialization
+2. Запустите команду `bundle`
+```
+$ bundle
+```
+3. Запустите миграции
+```
+$ rails db:migrate
+```
 
-* How to run the test suite
+4. Запустите `seed`, чтобы добавить демо данные в базу данных
+```
+$ rails db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+В БД будет добавлен пользователи, группа с пользователями, курс, тест.
 
-* Deployment instructions
+_см. `db/seeds.rb`_
 
-* ...
+5. Запустите консоль
+```
+$ rails c
+```
+
+#### Описание приложения
+
+Для просмотра созданных данных при запущенном `rails c`:
+
+Запишем пользователя c `id: 2` в переменную
+```
+u = User.find 2
+```
+
+Посмотрим на какие курсы он записан:
+
+```
+u.courses
+```
+Результат должен быть примерно таким:
+```
+[#<Course id: 2, name: "Geo", created_at: "2020-07-15 15:27:49", updated_at: "2020-07-15 15:27:49">, #<Course id: 1, name: "Algebra", created_at: "2020-07-15 15:27:49", updated_at: "2020-07-15 15:27:49">]
+```
+
+Посмотрим какие курсы в прогрессе
+
+```
+u.in_progress_courses
+```
+
+Результат должен быть примерно таким, т.е. Алгебру пользователь всё еще не завершил, а географию - сдал
+```
+[#<Course id: 1, name: "Algebra", created_at: "2020-07-15 15:27:49", updated_at: "2020-07-15 15:27:49">]
+```
+```
+u.quizzes
+```
+
+Проверить пользователя на админа можно так
+```
+u.admin?
+```
+Результат будет `false`
